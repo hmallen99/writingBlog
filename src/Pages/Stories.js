@@ -31,6 +31,6 @@ function Stories() {
             </Switch>
         </div>
     );
-  }
+}
 
-  export default Stories;
+export default Stories;

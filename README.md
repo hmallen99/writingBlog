@@ -1,7 +1,9 @@
 # Writing Blog
 
 This is a small React Project that I will be using to keep track of some of my writing projects!
+
 Frontend: React
+
 Backend: TBD
 
 # Getting the Project Running

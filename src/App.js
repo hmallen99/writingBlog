@@ -5,15 +5,11 @@ import {
     Route,
     Link,                                     
 } from "react-router-dom";
-import Stories from "./Stories";
-import Home from "./Home";
+import Stories from "./Pages/Stories";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 import './App.css';
 
-
-
-function About() {
-  return <h2>About</h2>;
-}
 
 function App() {
     return (
