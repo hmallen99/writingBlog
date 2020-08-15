@@ -19,10 +19,11 @@ function Story() {
 class StoryClass extends React.Component {
     constructor(props) {
         super(props);
-        
 
         this.state = {
-            name : props.name
+            title : "None",
+            author : "None",
+            body : "None",
         }
     }
 
@@ -30,27 +31,31 @@ class StoryClass extends React.Component {
         fetch(url, {
             method : 'POST',
             body : JSON.stringify({
-                name: this.state.name
+                name: this.props.name
             }),
             headers: {
                 'Content-type' : 'application/json'
             }
         }).then(response => response.json())
-        .then(response => this.setState({
-            apiResponse : JSON.stringify(response)
-        }))
+        .then(response => this.handleNewResponse(response))
         .catch(error => console.log(error))
+    }
+
+    handleNewResponse(response) {
+        response = response[0];
+        this.setState({
+            title : response["title"],
+            author : response["author"],
+            body : response["body"],
+        })
     }
 
     componentDidMount() {
         this.handleNewStory();
     }
 
-    componentDidUpdate() {
-        if (this.state.name !== this.props.name) {
-            this.setState({
-                name : this.props.name
-            })
+    componentDidUpdate(oldProps) {
+        if (oldProps.name !== this.props.name) {
             this.handleNewStory();
         }
     }
@@ -58,8 +63,9 @@ class StoryClass extends React.Component {
     render() {
         return (
             <div>
-                <h4>name: {this.state.name}</h4>
-                <p>{this.state.apiResponse}</p>
+                <h4>{this.state.title}</h4>
+                <h5>{this.state.author}</h5>
+                <p>{this.state.body}</p>
             </div> 
         )
     }
