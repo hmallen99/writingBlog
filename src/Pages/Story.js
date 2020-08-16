@@ -3,7 +3,7 @@ import {
     useParams
 } from "react-router-dom";
 
-const url = "http://localhost:4000/story/getStory";
+const url = "https://mysterious-waters-54593.herokuapp.com/story/getStory";
 
 function Story() {
     let { storyName } = useParams();
